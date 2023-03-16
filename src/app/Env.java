@@ -11,7 +11,7 @@ public class Env {
      public String userName = "nps@admin.com";
      public String password = "1234";
 
-     public void setUpDriver()
+     public  void setUpDriver()
      {
         System.setProperty("webdriver.edge.driver", "E:\\AvenirIT\\selenium\\NewTest\\NPS\\Driver\\msedgedriver.exe");
         EdgeOptions edgeOptions  =  new EdgeOptions();
@@ -22,16 +22,24 @@ public class Env {
      public void signIn() throws InterruptedException{
         driver.get(baseURL);
         driver.manage().window().maximize();
-        Thread.sleep(2500);
+        //Thread.sleep(2500);
 
-        driver.findElement(By.xpath("")).click();
-        driver.findElement(By.xpath("")).sendKeys(null);
+        driver.findElement(By.xpath("/html/body/div/div[2]/div[3]/div/div[2]/form/div[1]/input")).click();
+        driver.findElement(By.xpath("/html/body/div/div[2]/div[3]/div/div[2]/form/div[1]/input")).sendKeys(userName);
 
 
-        driver.findElement(By.xpath("")).click();
-        driver.findElement(By.xpath("")).sendKeys(null);
+        driver.findElement(By.xpath("/html/body/div/div[2]/div[3]/div/div[2]/form/div[2]/input")).click();
+        driver.findElement(By.xpath("/html/body/div/div[2]/div[3]/div/div[2]/form/div[2]/input")).sendKeys(password);
 
-        driver.findElement(By.xpath("")).click();
+        driver.findElement(By.xpath("/html/body/div/div[2]/div[3]/div/div[2]/form/div[3]/button")).click();
+     }  
+
+
+      public static void main(String[] args) {
+
+            Env env = new Env();
+            env.setUpDriver();
+        
      }
 
     }
